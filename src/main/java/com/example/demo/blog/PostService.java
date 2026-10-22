@@ -55,5 +55,4 @@ public class PostService {
                 .map(PostListResponseDto::new)
                 .toList();
     }
-
 }

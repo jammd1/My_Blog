@@ -21,5 +21,4 @@ public class GetRequestDto {
         this.createdAt = entity.getCreatedAt();
         this.updatedAt = entity.getUpdatedAt();
     }
-
 }

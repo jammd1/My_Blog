@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/posts")
+@RequestMapping("/api/posts")
 public class PostController {
     private final PostService postService;
 
@@ -29,7 +29,6 @@ public class PostController {
         return ResponseEntity
                 .created(URI.create("/api/posts/" + postId))
                 .body(postId);
-
     }
 
     @GetMapping("/{postId}")
@@ -59,6 +58,4 @@ public class PostController {
         Long deletedId = postService.delete(postId);
         return ResponseEntity.ok(deletedId); // 삭제된 게시글 id 반환
     }
-
-
 }
