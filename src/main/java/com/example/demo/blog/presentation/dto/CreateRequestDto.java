@@ -3,7 +3,6 @@ package com.example.demo.blog.presentation.dto;
 
 import com.example.demo.blog.domain.Post;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
