@@ -2,7 +2,7 @@ package com.example.demo.blog;
 
 import com.example.demo.blog.domain.Post;
 import com.example.demo.blog.presentation.dto.CreateRequestDto;
-import com.example.demo.blog.presentation.dto.GetRequestDto;
+import com.example.demo.blog.presentation.dto.GetResponseDto;
 import com.example.demo.blog.presentation.dto.PostListResponseDto;
 import com.example.demo.blog.presentation.dto.UpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -42,11 +42,11 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public GetRequestDto findById(Long id) {
+    public GetResponseDto findById(Long id) {
         Post post = postRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("GET: There's no post with id:" + id));
-        return new GetRequestDto(post);
+        return new GetResponseDto(post);
     }
 
     @Transactional(readOnly = true)

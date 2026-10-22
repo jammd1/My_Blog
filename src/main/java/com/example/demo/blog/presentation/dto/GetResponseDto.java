@@ -7,14 +7,14 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class GetRequestDto {
+public class GetResponseDto {
     private final Long id;
     private final String title;
     private final String content;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
 
-    public GetRequestDto(Post entity) {
+    public GetResponseDto(Post entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();

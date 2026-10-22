@@ -2,7 +2,7 @@ package com.example.demo;
 
 import com.example.demo.blog.PostService;
 import com.example.demo.blog.presentation.dto.CreateRequestDto;
-import com.example.demo.blog.presentation.dto.GetRequestDto;
+import com.example.demo.blog.presentation.dto.GetResponseDto;
 import com.example.demo.blog.presentation.dto.PostListResponseDto;
 import com.example.demo.blog.presentation.dto.UpdateRequestDto;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +32,7 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public ResponseEntity<GetRequestDto> getPost(
+    public ResponseEntity<GetResponseDto> getPost(
             @PathVariable Long postId
     ) {
         return ResponseEntity.ok(postService.findById(postId));
@@ -40,7 +40,11 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<List<PostListResponseDto>> getPosts() {
-        return ResponseEntity.ok(postService.getPosts());
+        List<PostListResponseDto> responseDtos = postService.getPosts();
+        if (responseDtos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(responseDtos);
     }
 
     @PutMapping("/{postId}")
@@ -56,6 +60,7 @@ public class PostController {
             @PathVariable Long postId
     ) {
         Long deletedId = postService.delete(postId);
+
         return ResponseEntity.ok(deletedId); // 삭제된 게시글 id 반환
     }
 }
