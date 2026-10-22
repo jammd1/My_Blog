@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -41,17 +39,9 @@ public class Post {
     }
 
     public void update(String newTitle, String newContent) {
-        try {
-            this.title = newTitle;
-            this.content = newContent;
-            this.updatedAt = LocalDateTime.now();
-        } catch (Exception e) {
-            System.out.printf("Post id: %d, Update Failed", this.id);
-        }
+        this.title = newTitle;
+        this.content = newContent;
+        this.updatedAt = LocalDateTime.now();
     }
 
-//    String toFormattedDate(LocalDateTime date) {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
-//        return date.format(formatter);
-//    }
 }

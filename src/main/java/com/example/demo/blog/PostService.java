@@ -3,13 +3,15 @@ package com.example.demo.blog;
 import com.example.demo.blog.domain.Post;
 import com.example.demo.blog.presentation.dto.CreateRequestDto;
 import com.example.demo.blog.presentation.dto.GetRequestDto;
+import com.example.demo.blog.presentation.dto.PostListResponseDto;
 import com.example.demo.blog.presentation.dto.UpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.lang.model.UnknownEntityException;
-import java.util.MissingResourceException;
+import java.util.List;
+
 
 @RequiredArgsConstructor
 @Service
@@ -39,11 +41,19 @@ public class PostService {
         return id;
     }
 
+    @Transactional(readOnly = true)
     public GetRequestDto findById(Long id) {
         Post post = postRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("GET: There's no post with id:" + id));
         return new GetRequestDto(post);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostListResponseDto> getPosts() {
+        return postRepository.findAll(Sort.by("createdAt").descending()).stream()
+                .map(PostListResponseDto::new)
+                .toList();
     }
 
 }
