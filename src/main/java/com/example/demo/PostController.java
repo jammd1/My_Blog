@@ -41,11 +41,7 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<List<PostListResponseDto>> getPosts() {
-        List<PostListResponseDto> responseDtos = postService.getPosts();
-        if (responseDtos.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(responseDtos);
+        return ResponseEntity.ok(postService.getPosts());
     }
 
     @PutMapping("/{postId}")
