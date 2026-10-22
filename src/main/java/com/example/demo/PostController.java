@@ -5,6 +5,7 @@ import com.example.demo.blog.presentation.dto.CreateRequestDto;
 import com.example.demo.blog.presentation.dto.GetResponseDto;
 import com.example.demo.blog.presentation.dto.PostListResponseDto;
 import com.example.demo.blog.presentation.dto.UpdateRequestDto;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<Long> createPost(
-            @RequestBody CreateRequestDto requestDto
+            @Valid @RequestBody CreateRequestDto requestDto
     ) {
         final Long postId = postService.save(requestDto);
 
