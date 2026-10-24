@@ -1,0 +1,22 @@
+.profile-image {
+    width: 128px;
+    height: 128px;
+    flex: 0 0 128px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .profile-image {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+    }
+}

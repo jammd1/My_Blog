@@ -1,0 +1,26 @@
+.home-header {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+    padding-left: 24px;
+}
+
+.home-header h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+@media (max-width: 600px) {
+    .home-header {
+        gap: 20px;
+        padding-left: 0;
+    }
+
+    .home-header h1 {
+        font-size: 28px;
+        letter-spacing: -0.8px;
+    }
+}

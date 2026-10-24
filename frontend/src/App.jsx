@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
 import { fetchPosts } from "./posts.jsx";
+import HomeHeader from "./components/HomeHeader.jsx";
+import SectionDivider from "./components/SectionDivider.jsx";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -17,7 +19,8 @@ function App() {
 
   return (
       <main>
-        <h1>jammd1의 블로그</h1>
+        <HomeHeader/>
+        <SectionDivider/>
         {posts.length === 0 && <p>조회된 게시글이 없습니다.</p>}
         {posts.length >= 1 &&  <ul>
           {posts.map((post) => (
