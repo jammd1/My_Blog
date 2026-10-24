@@ -1,36 +1,14 @@
-import {useEffect, useState} from 'react'
-import { fetchPosts } from "./posts.jsx";
-import HomeHeader from "./components/HomeHeader.jsx";
-import SectionDivider from "./components/SectionDivider.jsx";
+import {Route, Routes} from "react-router";
+import Home from "./Home.jsx";
+import PostDetail from "./PostDetail.jsx";
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchPosts()
-        .then(setPosts)
-        .catch((reqError) => setError(reqError.message));
-  }, []);
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
-      <main>
-        <HomeHeader/>
-        <SectionDivider/>
-        {posts.length === 0 && <p>조회된 게시글이 없습니다.</p>}
-        {posts.length >= 1 &&  <ul>
-          {posts.map((post) => (
-              <li key = {post.id}>
-                {post.title}
-              </li>
-          ))}
-        </ul>}
-      </main>
-  );
+      <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/posts/:postId" element={<PostDetail/>}/>
+      </Routes>
+  )
 }
 
 export default App

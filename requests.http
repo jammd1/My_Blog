@@ -3,8 +3,8 @@ POST http://localhost:8080/api/posts
 Content-Type: application/json
 
 {
-  "title": "테스트용 게시글 제목",
-  "content": "테스트용 게시글 내용"
+  "title": "테스트용 게시글 제목3",
+  "content": "테스트용 게시글 내용3"
 }
 
 > {%
